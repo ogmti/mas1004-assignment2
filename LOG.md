@@ -47,6 +47,13 @@ End the log with your plan for what to try next.
 - two things the mistakes have in common: 차량이 등장하는 이미지이거나 사람들이 여럿 나오는 이미지가 많다.
 - what it means: 같은 나라 안의 도시는 기준을 찾기 어렵다.
 
+## 2026-11-10 balanced (Track A), released without a full run
+- changed: `sample_weights` in `track_a/recipe.py` gives each photo one over the number of photos of its city, so every city is drawn equally often; nothing else
+- why:
+- validation: no full run (16 minutes before the deadline); `official.py --quick --device cpu` passed (0.257 on 200 photos, not an official run). Baseline before: 0.4919 (seed 0), 0.4909 (seed 1)
+- released `track-a-2` "balanced sampling"
+- what it means:
+
 ## Not done (time ran out)
 - PLAN Step 5: a Track A release by the mid-point check (30 October); the first release is from 10 November
 - PLAN Step 6: Track A changes, one at a time
