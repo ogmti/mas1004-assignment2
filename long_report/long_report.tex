@@ -16,16 +16,15 @@
 \usepackage{mas1004}
 
 \reporttitle{Assignment 2: Long report}
-\studentname{Your name}
-\studentid{Your student ID}
+\studentname{오준명}
+\studentid{20261227}
 
 \begin{document}
 \makeheader
 
-\fillin{Your leaderboard nickname, and the tags of your last Track A and Track B releases.}
-
-% The sections below are a suggestion. Change, merge or add sections as you
-% like; README.md, "The long report", says what a reader should be able to see.
+Leaderboard nickname: \texttt{ogmti}. Last releases: \texttt{track-a-1}
+(``starter recipe'') and \texttt{track-b-1} (``starter model''), both made on
+10 November.
 
 % ---------------------------------------------------------------------------
 \section*{Track A}
@@ -35,39 +34,87 @@
 \toprule
 tag & what changed from the run before & validation \\
 \midrule
-\multicolumn{3}{l}{\fillin{one row per recipe, with the numbers from experiments.csv}} \\
+baseline, seed 0 & the starter recipe as given, all training photos (first full run) & 0.4919 \\
+baseline, seed 1 & only the seed & 0.4909 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-\fillin{What you tried, why, and what you think each result means.}
+The only Track A recipe I trained is the starter recipe, unchanged, on all
+training photos, with seeds 0 and 1. Both runs were on Colab. On my own
+computer \texttt{official.py} stopped with an error on the Mac GPU (mps), and
+a run on the CPU would take about 189 minutes, as \texttt{official.py -{}-quick}
+printed.
 
-\fillin{Your final recipe and selection, and their leaderboard score next to
-their validation score.}
+The two runs differ only in the seed, and their validation scores are 0.4919
+and 0.4909, a difference of 0.0010. By city, the difference is larger:
+
+\begin{center}\footnotesize
+\begin{tabular}{lrrrrr}
+\toprule
+ & seoul & busan & tokyo & osaka & taipei \\
+\midrule
+seed 0 & 0.5737 & 0.3806 & 0.6174 & 0.3398 & 0.5479 \\
+seed 1 & 0.5630 & 0.3986 & 0.6138 & 0.3689 & 0.5105 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\fillin{What you think these results mean.}
+
+My final recipe is \texttt{track\_a/recipe.py} as it came, with no
+\texttt{selection.csv}, released as \texttt{track-a-1}. It has no leaderboard
+score yet: the release is from 10 November, and the grader scores it after
+midnight.
+
+I did not make any Track A change after the baseline (PLAN Steps 6 and 7),
+because time ran out. The first release was also after the mid-point check of
+30 October.
 
 % ---------------------------------------------------------------------------
 \section*{Decisions you made from photos}
 
+Before training I looked at sheets of training photos of all five cities
+(\texttt{curate.py look}). What I wrote down in \texttt{LOG.md}:
+
+\begin{quote}
+각 나라는 도시 사진 속 간판 언어의 차이에 따라 쉽게 구분할 수 있지만 간판이 없는
+사진도 있기 때문에 글자 외의 요인에 의한 구분이 필요하다. 같은 나라 안의 도시는
+기준을 찾기 어려웠으며 도시의 거리와 직접적으로 연관되지 않은 박물관 유물이나
+자동차 실내 사진 등이 있었다. 단, 부산의 경우 바다가 자주 나오는 등의 경향을 통해
+기준을 잡을 수 있었다.
+\end{quote}
+
+After the baseline, \texttt{curate.py mistakes} made one sheet per city of the
+48 validation photos that baseline seed 0 got most confidently wrong. It
+printed how many validation photos of each city were wrong: seoul 1038 of
+2435, busan 859 of 1390, tokyo 1485 of 3881, osaka 1404 of 2128, taipei 1013
+of 2243. The sheet for Busan:
+
 \picturefile{figures/mistakes_baseline_seed0_busan_00.png}
 
-\fillin{What you looked at, what you saw in common, and the rule you wrote
-before acting.}
+\fillin{Two things the mistakes have in common, in your own words.}
 
-\fillin{What you changed (the output of curate.py count, or the photos you
-added), and the scores before and after.}
-
-\fillin{The requests you gave your agent for these decisions.}
+I did not drop or add any photos: there is no \texttt{track\_a/dropped.csv}
+and no \texttt{selection.csv}, so there are no scores before and after to
+compare.
 
 % ---------------------------------------------------------------------------
 \section*{Track B}
 
-\fillin{What you tried, one step at a time, and the validation score after
-each step.}
+One model: \texttt{src/train\_b.py} as given (ResNet18 at 224 pixels, 4
+epochs, the starter training photos, \texttt{IMAGENET1K\_V1} starting
+weights), trained on my Mac (mps) in 1144 seconds. Its validation score is
+0.4926 (seoul 0.5363, busan 0.3755, tokyo 0.6284, osaka 0.3745, taipei
+0.5484). It is released as \texttt{track-b-1}. I made no further Track B
+change (PLAN Step 9).
 
-\fillin{How you collected any extra photos.}
+I collected no extra photos.
 
-\fillin{Your validation score next to your leaderboard score, and why they
-might disagree.}
+There is no leaderboard score yet to put next to the validation score, for
+the same reason as in Track A.
+
+\fillin{Why the validation score and the leaderboard score might disagree.}
 
 \subsection*{Your submission, as the grader sees it}
 \outputfile{outputs/check_submission.txt}
@@ -75,8 +122,12 @@ might disagree.}
 % ---------------------------------------------------------------------------
 \section*{What made the difference}
 
-\fillin{Which change helped most and which least, in both tracks, with your
-numbers.}
+I made no change in either track, so no change can be said to have helped or
+hurt. What I can compare is the Track A baseline (0.4919 and 0.4909) with
+the Track B starter model (0.4926): the same network and the same photos,
+trained by two different scripts, end within 0.002 of each other on the
+validation photos. In all three runs Tokyo has the highest score (0.61 to
+0.63) and Busan and Osaka the lowest (0.34 to 0.40).
 
 \fillin{What you would do next with one more week.}
 
