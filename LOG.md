@@ -37,7 +37,7 @@ End the log with your plan for what to try next.
 - validation: 0.4926 (seoul 0.5363, busan 0.3755, tokyo 0.6284, osaka 0.3745, taipei 0.5484); no Track B run before
 - `check_submission.py`: format and limits: OK, 11.17 million parameters, 1.81 billion multiply-adds, score 0.493 on 12077 photos
 - released `track-b-1` "starter model"
-- what it means: 오사카 사진이 눈에 띈다. 이를 통해 같은 나라 안의 도시는 기준을 찾기 어렵다고 생각했지만 도쿄 사진을 오사카로 착각한 것은 적었고, 마찬가지로 서울과 부산의 경우도 이와 비슷했다. 부산을 서울로 착각한 것이 많고 서울을 부산으로 착각한 것은 적었다. 도시의 사진이 많을수록 정확도가 커진다는 결론을 내렸다.
+- what it means: 오사카 사진이 눈에 띈다. 이를 통해 같은 나라 안의 도시는 기준을 찾기 어렵다고 생각했지만 도쿄 사진을 오사카로 착각한 것은 적었고, 마찬가지로 서울과 부산의 경우도 이와 비슷했다. 부산을 서울로 착각한 것이 많고 서울을 부산으로 착각한 것은 적었다. 같은 나라 안의 두 도시를 분류할 때 도시의 사진이 많을수록 정확도가 커진다고 추측했다.
 
 ## 2026-11-10 baseline (Track A)
 - changed: starter recipe as given, all training photos, seeds 0 and 1, on Colab (cuda)
