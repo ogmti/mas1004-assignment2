@@ -1,0 +1,2 @@
+finished,track,tag,seed,official_budget,budget,val_score,seoul,busan,tokyo,osaka,taipei,train_seconds,device,selection,recipe_sha,selection_sha,commit
+2026-11-10T12:32:09,B,starter_b,,,176896,0.4926,0.5363,0.3755,0.6284,0.3745,0.5484,1144.2,mps,resnet18 224px; data/starter/train,,,902b499
