@@ -29,8 +29,7 @@ End the log with your plan for what to try next.
 ## 2026-11-10 starter recipe release (Track A)
 - `official.py --quick --device cpu` passed (validation 0.241 on 200 photos; on mps the same error as above)
 - released `track-a-1` "starter recipe" (`track_a/recipe.py` unchanged, no `selection.csv`)
-- why:
-- what it means:
+- why: 레시피를 바꾸기 전에 아무 변화 없는 결과를 기준으로 삼고 릴리스가 리더보드에 올라가는지 확인하기 위해 기본 레시피를 먼저 냈다. Colab GPU를 받지 못해 학습 없이 빠른 점검만 하고 릴리스했다.
 
 ## 2026-11-10 starter_b (Track B)
 - changed: `src/train_b.py` as given (resnet18, 224 px, 4 epochs, starter training photos, IMAGENET1K_V1), `--tag starter_b --submit`, on mps, 1144 s of training
@@ -45,8 +44,8 @@ End the log with your plan for what to try next.
 - why:
 - validation: seed 0 0.4919 (seoul 0.5737, busan 0.3806, tokyo 0.6174, osaka 0.3398, taipei 0.5479); seed 1 0.4909 (seoul 0.5630, busan 0.3986, tokyo 0.6138, osaka 0.3689, taipei 0.5105); no full Track A run before
 - `curate.py mistakes` on baseline seed 0 (`results/curate/mistakes_baseline_seed0_*`): wrong on seoul 1038 of 2435, busan 859 of 1390, tokyo 1485 of 3881, osaka 1404 of 2128, taipei 1013 of 2243
-- two things the mistakes have in common:
-- what it means:
+- two things the mistakes have in common: 차량이 등장하는 이미지이거나 사람들이 여럿 나오는 이미지가 많다.
+- what it means: 같은 나라 안의 도시는 기준을 찾기 어렵다.
 
 ## Not done (time ran out)
 - PLAN Step 5: a Track A release by the mid-point check (30 October); the first release is from 10 November
@@ -55,3 +54,4 @@ End the log with your plan for what to try next.
 - PLAN Step 9: Track B changes after the first model
 
 ## Next
+시간이 더 주어지면 왜 틀리는지 보고, 하나를 바꾸고, 점수가 올랐는지 재는 과정을 거치고 싶다.
