@@ -33,15 +33,15 @@ End the log with your plan for what to try next.
 
 ## 2026-11-10 starter_b (Track B)
 - changed: `src/train_b.py` as given (resnet18, 224 px, 4 epochs, starter training photos, IMAGENET1K_V1), `--tag starter_b --submit`, on mps, 1144 s of training
-- why:
+- why: Track B의 경우 시간 부족으로 인해서 train_b.py를 그대로 학습해야만 했다.
 - validation: 0.4926 (seoul 0.5363, busan 0.3755, tokyo 0.6284, osaka 0.3745, taipei 0.5484); no Track B run before
 - `check_submission.py`: format and limits: OK, 11.17 million parameters, 1.81 billion multiply-adds, score 0.493 on 12077 photos
 - released `track-b-1` "starter model"
-- what it means:
+- what it means: 오사카 사진이 눈에 띈다. 같은 나라 안의 도시는 기준을 찾기 어렵다는 점을 도출해낼 수 있기 때문이다.
 
 ## 2026-11-10 baseline (Track A)
 - changed: starter recipe as given, all training photos, seeds 0 and 1, on Colab (cuda)
-- why:
+- why: 두 번 돌려서 변화가 있을지 관찰했지만 미세한 차이가 나서 유의미한 차이를 감지할 수 없었다.
 - validation: seed 0 0.4919 (seoul 0.5737, busan 0.3806, tokyo 0.6174, osaka 0.3398, taipei 0.5479); seed 1 0.4909 (seoul 0.5630, busan 0.3986, tokyo 0.6138, osaka 0.3689, taipei 0.5105); no full Track A run before
 - `curate.py mistakes` on baseline seed 0 (`results/curate/mistakes_baseline_seed0_*`): wrong on seoul 1038 of 2435, busan 859 of 1390, tokyo 1485 of 3881, osaka 1404 of 2128, taipei 1013 of 2243
 - two things the mistakes have in common: 차량이 등장하는 이미지이거나 사람들이 여럿 나오는 이미지가 많다.
